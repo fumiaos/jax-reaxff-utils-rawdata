@@ -1,24 +1,13 @@
 def convert_text(input_text):
-    # 将输入文本按行分割
     lines = input_text.strip().split("\n")
-
-    # 初始化结果字符串
     result = []
-
-    # 遍历每一行，按要求格式化
     for line in lines:
-        # 添加双引号和转义字符
         formatted_line = f'{line}\n'
         #formatted_line = f'"{line}"\n'
         result.append(formatted_line)
-
-    # 将结果列表拼接成字符串
     output_text = "".join(result)
-
     return output_text
-
 if __name__ == '__main__':
-    # 输入文本
     input_text = """
           16
      i =       26, E =     -2325.3017868686
@@ -57,6 +46,6 @@ if __name__ == '__main__':
      Co         6.0872732947        2.5364131017        2.0046072420
      Co         8.0462409816        3.8123142239        2.0825992020
     """
-    # 调用函数并打印结果
     output_text = convert_text(input_text)
+
     print(output_text)
