@@ -1,0 +1,51 @@
+def convert_to_pdb(input_data):
+    # 分割输入数据为单独的结构
+    structures = input_data.strip().split("\n\n")
+
+    # 初始化输出数据
+    output_data = ""
+    struct_num = 1
+    # 为每个结构生成PDB格式的字符串
+    for i, structure in enumerate(structures, start=1):
+        lines = structure.split('\n')
+        desc_line = lines[0]  # 描述行
+        energy_line = lines[1]  # 能量行
+        atom_lines = lines[2:]  # 原子坐标行
+
+        # 提取结构编号和能量
+        #struct_num = i
+        energy = energy_line.split(",")[1].strip()
+
+        # 生成PDB格式的描述行
+        pdb_description = f"BIOGRF 200\nDESCRP co0001_{struct_num}\nRUTYPE SINGLE POINT\nFORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)\n"
+        struct_num+=1
+        # 生成PDB格式的原子坐标行
+        pdb_atoms = ""
+        atom_num = 1
+        for atom_line in atom_lines:
+            parts = atom_line.split()
+            #print(parts)
+            atom_type = parts[0]
+            x = parts[1]
+            y = parts[2]
+            z = parts[3]
+            pdb_atoms += f"HETATM     {atom_num} {atom_type}         {x}    {y}    {z}   {atom_type}     1 0  0.00000\n"
+            atom_num+=1
+        # 生成PDB格式的连接行
+        pdb_conect = "FORMAT CONECT (a6,12i6)\n"
+
+        # 生成PDB格式的能量行
+        pdb_energy = f"END \n"
+
+        # 将所有行组合成完整的PDB格式字符串
+        output_data += pdb_description + pdb_atoms + pdb_conect + pdb_energy
+
+    return output_data
+if __name__ == '__main__':
+    # 示例输入数据
+    input_data = (  #注意格式 多余空格
+
+    )
+    # 调用函数并打印结果
+    pdb_output = convert_to_pdb(input_data)
+    print(pdb_output)
