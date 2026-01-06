@@ -4,8 +4,9 @@ This repository contains format conversion scripts and original datasets built o
 
 ## What’s Inside
 
-- `scripts/`: Python scripts to convert XYZ → REAXFF input format
-- `data/`: Original training datasets (cauculated by using cp2k(https://www.cp2k.org/) cp2k input file writing by multiwfn（http://sobereva.com/multiwfn/）)
+Python scripts to convert XYZ → REAXFF input format
+- `data/`: Original training datasets
+- (cauculated by using cp2k(https://www.cp2k.org/) cp2k input file writing by multiwfn（http://sobereva.com/multiwfn/）)
 
 ## Quick start
 
