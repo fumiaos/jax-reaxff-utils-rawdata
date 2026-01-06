@@ -7,3 +7,7 @@ This repository contains custom format conversion scripts and original datasets 
 - `scripts/`: Python scripts to convert XYZ → REAXFF input format
 - `data/`: Original training datasets (cauculated by using cp2k(https://www.cp2k.org/))
 
+## Quick start
+
+```bash
+python run.py --input data/stru.xyz --output example
